@@ -71,12 +71,78 @@ public class Stafete {
 
                 case "Sākt sacensības":
                     if (!komandaA.isEmpty() && !komandaB.isEmpty()) {
-                        // Logika sacensībām šeit (vēl nav pievienota)
+
+                        iteracija = 1;
+
+                        while (!komandaA.isEmpty() && !komandaB.isEmpty()) {
+
+                            int a = komandaA.poll();
+                            int b = komandaB.poll();
+
+                            String msg = iteracija + ". iterācija\n"
+                                       + a + " pret " + b + "\n\n";
+
+                            if (a > b) {
+                                komandaA.add(a);
+                                msg += "Uzvar A dalībnieks!\n"
+                                     + b + " ❌ izkrīt\n"
+                                     + a + " 🔁 atgriežas rindas beigās";
+                            } 
+                            else if (b > a) {
+                                komandaB.add(b);
+                                msg += "Uzvar B dalībnieks!\n"
+                                     + a + " ❌ izkrīt\n"
+                                     + b + " 🔁 atgriežas rindas beigās";
+                            } 
+                            else {
+                                msg += "💥 Neizšķirts!\nAbi dalībnieki izkrīt!";
+                            }
+
+                            JOptionPane.showMessageDialog(
+                                null,
+                                msg,
+                                "Cīņa",
+                                JOptionPane.INFORMATION_MESSAGE
+                            );
+
+                            iteracija++;
+                        }
+
+                        if (komandaA.isEmpty() && komandaB.isEmpty()) {
+                            JOptionPane.showMessageDialog(
+                                null,
+                                "🤯 Abas komandas izkrita!\nNav uzvarētāja!",
+                                "Rezultāts",
+                                JOptionPane.WARNING_MESSAGE
+                            );
+                        } 
+                        else if (komandaA.isEmpty()) {
+                            JOptionPane.showMessageDialog(
+                                null,
+                                "🏆 Uzvar komanda B!",
+                                "Uzvara",
+                                JOptionPane.INFORMATION_MESSAGE
+                            );
+                        } 
+                        else {
+                            JOptionPane.showMessageDialog(
+                                null,
+                                "🏆 Uzvar komanda A!",
+                                "Uzvara",
+                                JOptionPane.INFORMATION_MESSAGE
+                            );
+                        }
+
                     } else {
-                        JOptionPane.showMessageDialog(null, "Komandas nemaz nav izveidotas!",
-                                "Brīdinājums", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(
+                            null,
+                            "Komandas nav izveidotas!",
+                            "Brīdinājums",
+                            JOptionPane.WARNING_MESSAGE
+                        );
                     }
                     break;
+
 
                 case "Apturēt":
                     // Beigt programmu
