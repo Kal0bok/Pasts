@@ -18,7 +18,7 @@ public class Biblioteka {
         return ievade;
     }
 
-    static double skaitlaParbaude(String zinojums, double tips) {
+    public static double skaitlaParbaude(String zinojums, double tips) {
         String ievade;
         double skaitlis;
 
@@ -28,7 +28,7 @@ public class Biblioteka {
                 return -1;
 
             try {
-                skaitlis = Double.parseDouble(ievade); // Используем Double.parseDouble для вещественных чисел
+                skaitlis = Double.parseDouble(ievade); 
                 if (skaitlis < 0.1) {
                     JOptionPane.showMessageDialog(
                         null,
